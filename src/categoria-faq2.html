@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+
+    <style>
+        html,
+        body {
+            height: auto;
+            width: 100%;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        body {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            background: #fff;
+            color: #75787b;
+            font-family: AvenirNextLTW01-Medium;
+            font-size: 16px;
+            line-height: 24px;
+            -ms-overflow-style: scrollbar;
+        }
+
+        .cookie-avl .cookie-wrapper {
+            display: table;
+        }
+
+        .cookie-wrapper {
+            display: none;
+            position: fixed;
+            max-width: 1440px;
+            margin: 0 auto;
+            top: 0px;
+            width: 100%;
+            padding: 10px 40px 8px;
+            text-align: left;
+            background-color: #00a4e0;
+            z-index: 9999;
+        }
+
+        .main-header {
+            position: fixed;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            background: #fff;
+            z-index: 1000;
+        }
+
+        section,
+        article {
+            width: 100%;
+            float: left;
+        }
+
+        article,
+        aside,
+        dialog,
+        figure,
+        footer,
+        header,
+        hgroup,
+        nav,
+        section {
+            display: block;
+        }
+
+        /*header {
+                height: 80px;
+            }*/
+
+        section intro-container {
+            height: 687px;
+        }
+
+        section image-map {
+            height: 688px;
+        }
+
+        .main-header .header-inner {
+            width: 20%;
+            float: left;
+        }
+
+        .main-header .nav-menu {
+            width: 80%;
+            display: block;
+            float: left;
+        }
+
+        .main-header ul.main-nav {
+            display: block;
+            width: auto;
+            /*margin-left: 30px;*/
+        }
+
+        .main-header .nav-menu ul li {
+            display: inline-block;
+            width: auto;
+            position: relative;
+            margin: 0;
+        }
+
+        .main-header ul.lan-select {
+            display: block;
+            width: auto;
+            /*margin: 15px 0px;*/
+            border-bottom: none;
+            float: right;
+            position: relative;
+            padding: 0px 20px;
+            text-align: center;
+        }
+
+
+        .main-header .nav-flexi .list-container .overlay {
+            position: absolute;
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: #f4f4f4;
+            z-index: -9;
+        }
+
+        .main-header .order-2 {
+            order: 2;
+        }
+
+        .main-header .order-3 {
+            order: 3;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .intro-container .image-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .main-header .nav-flexi .list-container>.list-item {
+            display: none;
+        }
+
+
+        img[loading="lazy"] {
+            display: none;
+        }
+    </style>
+
+    <script>
+        var yViewableArea = window.innerHeight;
+        if (window.innerWidth > 991) {
+            yViewableArea = 100;
+        } else if (window.innerWidth > 767) {
+            yViewableArea = 50;
+        } else {
+            yViewableArea = 50;
+        }
+        var imagePosi = 0;
+
+        function addLinktagforImage(val) {
+            var sc = document.createElement("link");
+            sc.setAttribute("href", val);
+            sc.setAttribute("rel", "preload");
+            sc.setAttribute("as", "image");
+            document.getElementsByTagName("head")[0].appendChild(sc);
+        }
+
+        function InitialImageload(img) {
+
+            //const images = document.querySelectorAll('img[loading="lazy"]');
+            if (img.getAttribute('datasrc') != undefined && img.src != img.getAttribute('datasrc') && img.getAttribute('loading') != undefined && img.getAttribute('loading') == "lazy") {
+                var device = "all";
+                if (window.innerWidth > 991) {
+                    device = "desktop";
+                } else if (window.innerWidth > 767) {
+                    device = "tablet";
+                } else {
+                    device = "mobile";
+                }
+
+                var BreakException = {};
+
+                try {
+
+
+
+                    if (img.getAttribute('device') != null && img.getAttribute('device') == 'all' && imagePosi < yViewableArea) {
+                        imagePosi += img.getAttribute('dataheight');
+                        if (img.getAttribute("datasrc") != '')
+                            img.src = img.getAttribute("datasrc")
+                        img.setAttribute('loading', 'lazy loaded')
+
+                        //setHeaderHight();
+                    } else if (img.getAttribute('device') != null && img.getAttribute('device').match('desktop') && device == "desktop" && imagePosi < yViewableArea) {
+                        imagePosi += img.getAttribute('dataheight');
+                        if (img.getAttribute("datasrc") != '')
+                            img.src = img.getAttribute("datasrc")
+                        img.setAttribute('loading', 'lazy loaded')
+
+                        //setHeaderHight();
+                    } else if (img.getAttribute('device') != null && img.getAttribute('device').match('tablet') && device == "tablet" && imagePosi < yViewableArea) {
+                        imagePosi += img.getAttribute('dataheight');
+                        if (img.getAttribute("datasrc") != '')
+                            img.src = img.getAttribute("datasrc")
+                        img.setAttribute('loading', 'lazy loaded')
+
+                        // setHeaderHight();
+                    } else if (img.getAttribute('device') != null && img.getAttribute('device').match('mobile') && device == "mobile" && imagePosi < yViewableArea) {
+                        imagePosi += img.getAttribute('dataheight');
+                        if (img.getAttribute("datasrc") != '')
+                            img.src = img.getAttribute("datasrc")
+                        img.setAttribute('loading', 'lazy loaded')
+
+                        //setHeaderHight();
+                    } else if (imagePosi >= yViewableArea) {
+                        throw BreakException;
+                    }
+                    dynamicHeight(img);
+
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            }
+
+        }
+
+        function ImageLazyload() {
+
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            if (images.length > 0) {
+                var device = "all";
+                if (window.innerWidth > 991) {
+                    device = "desktop";
+                } else if (window.innerWidth > 767) {
+                    device = "tablet";
+                } else {
+                    device = "mobile";
+                }
+
+                var BreakException = {};
+
+                try {
+
+                    for (var i = 0; i < images.length; i++) {
+                        var img = images[i];
+                        var yImagPosition = 0;
+                        const rect = img.getBoundingClientRect();
+                        yImagPosition = (rect.top != undefined ? rect.top : window.screenTop) + (window.scrollY != undefined ? window.scrollY : window.screenY);
+                        //console.log("------------------");
+                        //console.log("SRC : "+img.getAttribute("datasrc"));
+                        //console.log("DEVICE : " + img.getAttribute("device"));
+                        //console.log("yImagPosition : " + yImagPosition);
+                        //console.log("yViewableArea : " + yViewableArea);
+
+                        if (img.getAttribute('device') != null && img.getAttribute('device') == 'all' && yImagPosition < yViewableArea) {
+                            if (img.getAttribute("datasrc") != '')
+                                img.src = img.getAttribute("datasrc")
+                            img.setAttribute('loading', 'lazy loaded')
+
+                        } else if (img.getAttribute('device') != null && img.getAttribute('device').match('desktop') && device == "desktop" && yImagPosition < yViewableArea) {
+                            if (img.getAttribute("datasrc") != '')
+                                img.src = img.getAttribute("datasrc")
+                            img.setAttribute('loading', 'lazy loaded')
+
+                        } else if (img.getAttribute('device') != null && img.getAttribute('device').match('tablet') && device == "tablet" && yImagPosition < yViewableArea) {
+                            if (img.getAttribute("datasrc") != '')
+                                img.src = img.getAttribute("datasrc")
+                            img.setAttribute('loading', 'lazy loaded')
+
+                        } else if (img.getAttribute('device') != null && img.getAttribute('device').match('mobile') && device == "mobile" && yImagPosition < yViewableArea) {
+                            if (img.getAttribute("datasrc") != '')
+                                img.src = img.getAttribute("datasrc")
+                            img.setAttribute('loading', 'lazy loaded')
+
+                        } else if (yImagPosition >= yViewableArea) {
+                            throw BreakException;
+                        }
+
+                        dynamicHeight(img);
+
+
+                    }
+                } catch (e) {
+                    if (e !== BreakException) throw e;
+                }
+            }
+        }
+
+        function dynamicHeight(img) {
+
+            //if (img.parentElement != undefined && img.parentElement.parentElement != undefined &&
+            //    img.parentElement.parentElement.parentElement != undefined && img.parentElement.parentElement.parentElement.parentElement != undefined &&
+            //    img.parentElement.parentElement.parentElement.parentElement.getAttribute("class") != null &&
+            //    img.parentElement.parentElement.parentElement.parentElement.getAttribute("class").startsWith('overview-container')) {
+
+            //    if (window.innerWidth > 991) {
+
+            //        var height = img.parentElement.nextElementSibling.offsetHeight > img.parentElement.offsetHeight ? img.parentElement.nextElementSibling.offsetHeight : img.parentElement.offsetHeight;
+            //        img.parentElement.setAttribute('style','height:'+height+'px;')
+            //        img.parentElement.nextElementSibling.setAttribute('style','height:'+height+'px;')
+            //        img.setAttribute('style', 'height:'+height+'px;')
+            //    }
+            //    else {
+            //        img.parentElement.setAttribute('style', img.parentElement.getAttribute('style') + 'height:auto;')
+            //        img.parentElement.nextElementSibling.setAttribute('style', img.parentElement.nextElementSibling.getAttribute('style') + 'height:auto;')
+            //        img.setAttribute('style', 'height:auto;')
+            //    }
+
+            //}
+        }
+
+        //window.addEventListener('DOMContentLoaded', function () {
+        //    window.scrollBy(0, 1);
+        //});
+        function loadListeners() {
+
+            window.addEventListener('resize', function() {
+                ImageLazyload();
+            });
+
+            window.addEventListener('scroll', function() {
+                yViewableArea = window.innerHeight + (window.scrollY != undefined ? window.scrollY : window.screenY);
+                ImageLazyload();
+                //setHeaderHight();
+            });
+
+            window.addEventListener('load', function() {
+                ImageLazyload();
+            });
+        }
+
+        loadListeners();
+        //$(document).ready(function () {
+        //    alert('test');
+        //    ImageLazyload();
+        //})
+    </script>
+
+    <link rel="preload" href="/Images/blank-image.png?la=pt" as="image" />
+
+
+    <!--Fonts for other then Australia-->
+        <link rel="preload" as="style" href="//fast.fonts.net/cssapi/d12edc21-ced2-4219-94d9-f1987474ceda.css?display=swap" />
+        <link rel="preload" as="style" href="//fast.fonts.net/cssapi/53fb3da4-bd03-40d5-9010-1fae680aed4b.css?display=swap" />
+        <link rel="preload" as="style" href="//fast.fonts.net/cssapi/64a0ca88-fff0-48dc-8e2e-9b11887c8207.css?display=swap" />
+
+    <link rel="stylesheet" href="/Styles/Coolsculpting/FontReferenceStatic.css" />
+    <link href="/-/media/allergan-themes/theme/common/bootstrapmin.css" rel="stylesheet" type="text/css" />
+    <link href="/-/media/allergan-themes/theme/coolsculpting/custom/jquerybxslidermin.css" rel="stylesheet" type="text/css" />
+    <link href="/-/media/allergan-themes/theme/coolsculpting/bundles/minify/MinifiedFile030821142143.css" rel="stylesheet" type="text/css" />
+    <link href="/-/media/allergan-themes/theme/coolsculpting/custom/Cookie-Manage.css" rel="stylesheet" type="text/css" />
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/jquery-214min.js">
+    </script>
+    <meta name="description" content="Respostas sobre o procedimento de criolip&#243;lise mais recente do CoolSculpting&#174;, incluindo custo, tempo de licen&#231;a estimado, impacto, op&#231;&#245;es de perda de gordura e resultados de melhora do corpo.">
+    <title>Custo, resultados e informações do CoolSculpting® : CoolSculpting</title>
+        <link rel="dns-prefetch" href="https://www.coolsculpting.com.br">
+        <link rel="preconnect" href="https://www.coolsculpting.com.br">
+        <link rel="canonical" href="https://www.coolsculpting.com.br/faq">
+
+
+    <link rel="icon" href="/-/media/project/coolsculpting/page/favicon.ico" />
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var
+                f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KSQJDHS');
+    </script>
+
+
+
+    <script>
+        var siteDefaultLanguage = 'pt';
+
+
+        var supportLowercaseURL = false;
+
+        var removeDefaultLanguage = 1;
+        if (removeDefaultLanguage == 1) {
+            removeDefaultLanguage = true;
+        } else {
+            removeDefaultLanguage = false;
+        }
+    </script>
+
+
+    <!--Fonts for other then Australia-->
+        <link rel="stylesheet" href="//fast.fonts.net/cssapi/d12edc21-ced2-4219-94d9-f1987474ceda.css?display=swap" />
+        <link rel="stylesheet" href="//fast.fonts.net/cssapi/53fb3da4-bd03-40d5-9010-1fae680aed4b.css?display=swap" />
+        <link rel="stylesheet" href="//fast.fonts.net/cssapi/64a0ca88-fff0-48dc-8e2e-9b11887c8207.css?display=swap" />
+                    
+    <script defer rel="preload" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALkGGfcTisYYtZuo-kd-vY2mQ3oDUuWEQ&amp;channel=CoolSculpting-BR&amp;libraries=places"></script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/angularmin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/angular-routemin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/angular-cookiesmin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/angular-filter.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/bundles/minify/MinifiedFile151121152323.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/bootstrapmin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/custom/modalVideomin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/custom/mapsvgmin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/custom/jquerynicescrollmin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/custom/jquerybxslidermin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/custom/player.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/common/AgnProjectCoolsculptingjquerygeocompletemin.js">
+    </script>
+    <script defer type="text/javascript" src="/-/media/allergan-themes/script/coolsculpting/custom/managecookie.js">
+    </script>
+</head>
+
+<body class="pt BrazilCoolsculpting" pagename="FAQCategory" data-imglazyload="1" enablelanguagecodeupdate="True">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSQJDHS" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+
+    <div id="settings-site" data-isEEditor="0">
+        <div id="settings-geolocation" data-geolocationapi=https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAltuYszRmFVsQ6SIQv6O7UYvITwc57dd0>
+        </div>
+        <div id="settings-countrycode" data-country=BR>
+        </div>
+        <div id="settings-countrycodefilter" data-countries="BR">
+        </div>
+        <div id="settings-countryname" data-countryname="Brazil">
+        </div>
+        <div id="settings-unbranded" data-unbranded="False">
+        </div>
+        <div id="settings-isgdpr" data-gdpr="True">
+        </div>
+        <div id="settings-isdistanceinkm" data-distanceinkm="False">
+        </div>
+        <div id="settings-isradius" data-radius="">
+        </div>
+
+        <div id="settings-SFGlobalcliniclocator" data-ICLApproach="1">
+        </div>
+        <div id="settings-ICLDistance" data-icldistancevalue="">
+        </div>
+        <div id="settings-ICLCountryCode" data-ICLCountryCodevalue="BR">
+        </div>
+        <div id="settings-ICLClustercountrycode" data-Clustercountrycodevalue="">
+        </div>
+        <div id="settings-ImageLazyload" data-ImageLazyload="1">
+        </div>
+
+    </div>
+
+    <!--  Start Sitecore Jquery Issues Conflict -->
+    <script>
+        if (typeof jQuery != 'undefined' && jQuery.fn.jquery == "1.5.1") {
+            jQuery.noConflict(true);
+        }
+    </script>
+    <!--  End Sitecore Jquery Issues Conflict -->
+    <div ng-app="allerganApp" class="ng-coolsculpting">
+        <!--Start: Cookie Policy Section-->
+        <section cookie class="ng-scope">
+
+
+
+            <div class="modal fade" id="csmodelpopup">
+                <div class="modal-dialog" role="dialog" tabindex="">
+                    <div class="modal-content" role="document">
+
+                        <div class="main container" style="height: auto;">
+                            <div class="raw">
+                                <div class="main-container" style="margin: auto; top: auto;">
+                                    <div class="w-cover hcp-popup">
+
+                                        <h1 class="m40">
+                                        </h1>
+                                        <div class="bottom-text">
+                                        </div>
+                                        <a class="btn-lnk m40" id=landinghcp-btn>
+                                            <span class="cursor-md">
+                                            </span>
+
+                                        </a>
+
+                                        <span class="cursor-md">
+
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--End: Cookie Policy Section-->
+        <!--Start: Header Section-->
+
+        <section header class="ng-scope">
+            <header class="main-header clearfix " role="banner">
+                <div class="header-inner">
+                    <div class="header exp-editor">
+<a href="/" class="logo ft-left" ><img src="/Images/blank-image.png?la=pt" dataheight="42" src="" onload="InitialImageload(this)" loading="lazy" device="desktop" datasrc="/-/media/project/coolsculpting/logo/logo-coolsculp-dt.png" alt="CoolSculpting" class="hidden-xs hidden-sm" /><img src="/Images/blank-image.png?la=pt" dataheight="42" src="" onload="InitialImageload(this)" loading="lazy" device="tablet" datasrc="/-/media/project/coolsculpting/logo/logo-coolsculp-dt.png" alt="CoolSculpting" class="hidden-xs hidden-md hidden-lg" /><img src="/Images/blank-image.png?la=pt" dataheight="42" src="" onload="InitialImageload(this)" loading="lazy" device="mobile" datasrc="/-/media/project/coolsculpting/logo/logo-coolsculp-dt.png" alt="CoolSculpting" class="hidden-sm hidden-md hidden-lg" /></a>        
+
+
+                        <a href="javascript:void(0);" aria-expanded="false" role="button" aria-label="toggle navigation" data-ng-class="{active: active}" data-ng-click="active =!active;menuToggled();" class="btn menu-btn ft-right">
+                            <span class="sr-only">Menu de navega&#231;&#227;o</span>
+                            <div data-ng-hide="active" class="burger-menu ft-left">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+<img src="/Images/blank-image.png?la=pt" dataheight="24" src="" Class="close-toggle" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/logo/close.png" data-ng-show="active" alt="" />
+
+                        </a>
+                    </div>
+
+                </div>
+                <div class="nav-menu" role="navigation">
+                    <ul class="ft-left main-nav order-2 nav-flexi " role="menubar">
+                        <li class="list-container" role="menuitem">
+                            <div class="overlay"></div>
+
+
+
+                            <a href="javascript:void(0);" Class="nav-title" aria-expanded="false" aria-haspopup="true">Sobre CoolSculpting&reg;<img src="/-/media/project/coolsculpting/navigation/icon-drop.png?h=24&amp;w=24&amp;la=pt&amp;hash=742FF754B69F9D4AD926EC1F98A034AEE4561EBF" alt="" /></a>
+                            <a href="javascript:void(0);" ng-click="navigateNxt($event);" Class="list-item">Sobre CoolSculpting&reg;</a>
+                            <ul class="sub-menu dropdown-content">
+                                <li>
+
+<a href="/o-que-e-o-coolsculpting" ng-click="navigateNxt($event);" Class="list-item" >                                                 <!--inner Navigation Menu DisplayName-->
+O que é o CoolSculpting®?</a>
+                                </li>
+                                <li>
+
+<a href="/o-que-esperar" ng-click="navigateNxt($event);" Class="list-item" >                                                 <!--inner Navigation Menu DisplayName-->
+O que esperar</a>
+                                </li>
+                                <li>
+
+<a href="/como-funciona" ng-click="navigateNxt($event);" Class="list-item" >                                                 <!--inner Navigation Menu DisplayName-->
+Como funciona</a>
+                                </li>
+                                <li>
+
+<a href="/faq" ng-click="navigateNxt($event);" Class="list-item" >                                                 <!--inner Navigation Menu DisplayName-->
+Perguntas frequentes</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-container" role="menuitem">
+                            <div class="overlay"></div>
+
+
+
+                            <a href="javascript:void(0);" Class="nav-title" aria-expanded="false" aria-haspopup="true">Resultados<img src="/-/media/project/coolsculpting/navigation/icon-drop.png?h=24&amp;w=24&amp;la=pt&amp;hash=742FF754B69F9D4AD926EC1F98A034AEE4561EBF" alt="" /></a>
+                            <a href="javascript:void(0);" ng-click="navigateNxt($event);" Class="list-item">Resultados</a>
+                            <ul class="sub-menu dropdown-content">
+                                <li>
+
+<a href="/galeria-de-antes-e-depois" ng-click="navigateNxt($event);" Class="list-item" >                                                 <!--inner Navigation Menu DisplayName-->
+Galeria de Antes e Depois</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                    <ul class="lan-select order-3">
+                    </ul>
+
+                    <ul class="cta-group order-1 " role="menubar">
+                        <li role="menuitem">
+<a href="/encontre-uma-clinica" onclick="dataLayer.push({'buttonLocation': 'Header','event': 'findProviderClicked'});" Class="btn cta" ><img src="/Images/blank-image.png?la=pt" dataheight="24" src="" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/map-pin.png" alt="" />                                    <span>
+                                    Encontre uma clínica
+                                </span>
+<img src="/-/media/project/coolsculpting/navigation/icon-drop.png?h=24&amp;w=24&amp;la=pt&amp;hash=742FF754B69F9D4AD926EC1F98A034AEE4561EBF" class="icon-nav" alt="" /></a>                    </li>
+                    </ul>
+
+                </div>
+            </header>
+            <div class="sticky-header "></div>
+        </section>
+        <!--End: Header Section-->
+        <!--Layout Changes: Start-->
+        <main>
+            <section>
+
+
+                <section intro class="ng-scope">
+                    <div class="intro-container">
+                        <div class="image-container">
+                            <img src="/Images/blank-image.png?la=pt" dataheight="756" src="#" onload="InitialImageload(this)" loading="lazy" device="desktop" datasrc="/-/media/project/coolsculpting/homepage/allergancool01desktop.jpg" alt="" class="image home hidden-xs hidden-sm" /><img src="/Images/blank-image.png?la=pt" dataheight="600" src="#" onload="InitialImageload(this)" loading="lazy" device="tablet" datasrc="/-/media/project/coolsculpting/homepage/allergancool03tablet.jpg" alt="" class="image home hidden-xs hidden-md hidden-lg" /><img src="/Images/blank-image.png?la=pt" dataheight="601" src="#" onload="InitialImageload(this)" loading="lazy" device="mobile" datasrc="/-/media/project/coolsculpting/homepage/allergancool02mobile.jpg" alt="" class="image home hidden-sm hidden-md hidden-lg" />
+                            <div class="dialog-wrapper">
+                                <div class="dialog-box" role="presentation">
+                                    <div class="dialog-align">
+                                        <h1>Perguntas frequentes</h1>
+                                        <p>
+                                            Caso tenha dúvidas sobre CoolSculpting®, estamos aqui para ajudar. Abaixo estão as respostas a algumas perguntas frequentes.
+
+
+
+                                        </p>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+
+                <section faq class="ng-scope">
+                    <div class="block-inner faq_container ng-scope white_bg " ng-controller="faqcontroller">
+
+                        <a href="/categoria-faq2?Cid=2" Class="faq-heading-link">
+                            <h3 aria-level="2" class="faq_heading">
+                                O processo de tratamento
+                            </h3>
+                        </a>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default white_bg">
+                                <div class="panel-heading">
+                                    <h4 aria-level="3" class="panel-title">
+                                        <a data-toggle="collapse" id="8" ng-click="setDeepLink('8');" data-parent="#accordion" href="#collapse1" role="tab" aria-expanded="false" onclick="if( $(this).attr('aria-expanded')=='true'){ return; }else{ dataLayer.push({&#39;faqName&#39;:&#39;O que devo dizer ao meu m&#233;dico?&#39;,&#39;event&#39;:&#39;faqViewed&#39;});; }">
+
+                                            Qual é a sensação?
+                                            <span><img src="/-/media/project/coolsculpting/faq/chevron-right15a86.png?h=24&amp;w=24&amp;la=pt&amp;hash=845A3ED6250084A1045A31264554193EA97834B1" class="arw dwn_arw" alt="" /></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1" class="panel-collapse collapse" role="tabpanel">
+                                    <div class="panel-body">
+                                        <p class="panel-text">
+                                            Nos primeiros minutos do resfriamento, é normal sentir um frio intenso.<sup>6</sup> Isso deve passar em breve.<sup>6</sup> Com alguns aplicadores, você sentirá alguns puxões quando a sucção for aplicada.<sup>6</sup>
+                                            <br /><br />
+                                            Após o tratamento, você pode sentir certo formigamento<sup>6</sup> enquanto a área for massageada por aproximadamente 2 minutos.<sup>4,22</sup> Os pacientes geralmente conseguem retornar às atividades normais após a consulta.<sup>3,4,23</sup> A seção <a href="/o-que-esperar">O que esperar</a> tem mais informações sobre o que acontece antes, durante e após o procedimento CoolSculpting<sup>®</sup>.
+
+                                        </p>
+                                    </div>
+                                </div>
+                                <noscript>
+                                    Nos primeiros minutos do resfriamento, é normal sentir um frio intenso.<sup>6</sup> Isso deve passar em breve.<sup>6</sup> Com alguns aplicadores, você sentirá alguns puxões quando a sucção for aplicada.<sup>6</sup>
+                                    <br /><br />
+                                    Após o tratamento, você pode sentir certo formigamento<sup>6</sup> enquanto a área for massageada por aproximadamente 2 minutos.<sup>4,22</sup> Os pacientes geralmente conseguem retornar às atividades normais após a consulta.<sup>3,4,23</sup> A seção <a href="/o-que-esperar">O que esperar</a> tem mais informações sobre o que acontece antes, durante e após o procedimento CoolSculpting<sup>®</sup>.
+
+                                </noscript>
+                            </div>
+                            <div class="panel panel-default white_bg">
+                                <div class="panel-heading">
+                                    <h4 aria-level="3" class="panel-title">
+                                        <a data-toggle="collapse" id="tp7" ng-click="setDeepLink('tp7');" data-parent="#accordion" href="#collapse2" role="tab" aria-expanded="false" onclick="if( $(this).attr('aria-expanded')=='true'){ return; }else{ dataLayer.push({&#39;faqName&#39;:&#39;Qual &#233; a sensa&#231;&#227;o?&#39;,&#39;event&#39;:&#39;faqViewed&#39;});; }">
+
+                                            O que devo dizer ao meu médico?
+                                            <span><img src="/-/media/project/coolsculpting/faq/chevron-right15a86.png?h=24&amp;w=24&amp;la=pt&amp;hash=845A3ED6250084A1045A31264554193EA97834B1" class="arw dwn_arw" alt="" /></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse" role="tabpanel">
+                                    <div class="panel-body">
+                                        <p class="panel-text">
+                                            Na primeira consulta, o seu médico perguntará sobre seu histórico de saúde para determinar se o CoolSculpting<sup>®</sup> pode ser adequado para você. É importante informar ao médico caso você tenha crioglobulinemia, doença de aglutininas a frio ou hemoglobinúria paroxística a frio, pois se tiver alguma dessas doenças você não pode receber o tratamento CoolSculpting<sup>®</sup>.<sup>6</sup>
+                                        </p>
+                                    </div>
+                                </div>
+                                <noscript>
+                                    Na primeira consulta, o seu médico perguntará sobre seu histórico de saúde para determinar se o CoolSculpting<sup>®</sup> pode ser adequado para você. É importante informar ao médico caso você tenha crioglobulinemia, doença de aglutininas a frio ou hemoglobinúria paroxística a frio, pois se tiver alguma dessas doenças você não pode receber o tratamento CoolSculpting<sup>®</sup>.<sup>6</sup>
+                                </noscript>
+                            </div>
+                            <div class="panel panel-default white_bg">
+                                <div class="panel-heading">
+                                    <h4 aria-level="3" class="panel-title">
+                                        <a data-toggle="collapse" id="9" ng-click="setDeepLink('9');" data-parent="#accordion" href="#collapse3" role="tab" aria-expanded="false" onclick="if( $(this).attr('aria-expanded')=='true'){ return; }else{ dataLayer.push({&#39;faqName&#39;:&#39;Quanto tempo dura cada tratamento? De quantas sess&#245;es vou precisar?&#39;,&#39;event&#39;:&#39;faqViewed&#39;});; }">
+
+                                            Quanto tempo dura cada tratamento? De quantas sessões vou precisar?
+                                            <span><img src="/-/media/project/coolsculpting/faq/chevron-right15a86.png?h=24&amp;w=24&amp;la=pt&amp;hash=845A3ED6250084A1045A31264554193EA97834B1" class="arw dwn_arw" alt="" /></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse3" class="panel-collapse collapse" role="tabpanel">
+                                    <div class="panel-body">
+                                        <p class="panel-text">
+                                            Seu médico CoolSculpting<sup>®</sup> vai ajudar você a criar um plano de tratamento individualizado, adaptado aos seus objetivos específicos. A duração da sessão CoolSculpting<sup>®</sup> vai variar de acordo com o número de áreas sendo tratadas numa consulta. A tecnologia mais recente do CoolSculpting<sup>®</sup> pode tratar um paciente em até 60 minutos.<sup>6</sup> Caso disponha de pouco tempo, mas várias áreas de gordura indesejada, algumas clínicas podem até ter vários sistemas CoolSculpting<sup>®</sup>. O seu médico explicará o processo e determinará se essa é uma opção adequada para você. Você e seu médico também podem agendar outras sessões ou consultas para atingir os seus objetivos.
+                                        </p>
+                                    </div>
+                                </div>
+                                <noscript>
+                                    Seu médico CoolSculpting<sup>®</sup> vai ajudar você a criar um plano de tratamento individualizado, adaptado aos seus objetivos específicos. A duração da sessão CoolSculpting<sup>®</sup> vai variar de acordo com o número de áreas sendo tratadas numa consulta. A tecnologia mais recente do CoolSculpting<sup>®</sup> pode tratar um paciente em até 60 minutos.<sup>6</sup> Caso disponha de pouco tempo, mas várias áreas de gordura indesejada, algumas clínicas podem até ter vários sistemas CoolSculpting<sup>®</sup>. O seu médico explicará o processo e determinará se essa é uma opção adequada para você. Você e seu médico também podem agendar outras sessões ou consultas para atingir os seus objetivos.
+                                </noscript>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section links class="ng-scope">
+                    <div class="link-container">
+                        <ul class="block-inner">
+                            <li class="action-block col-md-6 col-sm-12">
+                                <div class="box-toreactLink action-image">
+                                    <img src="/Images/blank-image.png?la=pt" dataheight="256" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/homepage/bottomlinklocation2x.png" alt="" />
+                                </div>
+                                <div class="box-dynamicLink action-text">
+
+                                    <a href="/encontre-uma-clinica" onclick="dataLayer.push({'buttonName': 'find a clinic','event': 'pageBottomButtonClicked'});"> <span class="link-text">Por que esperar? Encontre uma clínica perto de você hoje mesmo.</span>
+                                        <span class="link-nav"><img src="/Images/blank-image.png?la=pt" dataheight="48" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/circle-arrow-_lg.png" alt="" /></span>
+                                    </a>
+                                    <div class="courtesylink-text"></div>
+                                </div>
+
+                            </li>
+                            <li class="action-block col-md-6 col-sm-12">
+                                <div class="box-toreactLink action-image">
+                                    <img src="/Images/blank-image.png?la=pt" dataheight="256" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/homepage/bottomlinkbeforeafter2x.png" alt="" />
+                                </div>
+                                <div class="box-dynamicLink action-text">
+
+                                    <a href="/galeria-de-antes-e-depois" onclick="dataLayer.push({'buttonName': 'Before and after','event': 'pageBottomButtonClicked'});"> <span class="link-text">Inspire-se na nossa Galeria de Antes e Depois.</span>
+                                        <span class="link-nav"><img src="/Images/blank-image.png?la=pt" dataheight="48" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/circle-arrow-_lg.png" alt="" /></span>
+                                    </a>
+                                    <div class="courtesylink-text"></div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <div id="cs-model" class="modal fade in" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content" role="document">
+                            <div class="modal-header">
+                                <div class="cs-close-wrap" tabindex="0">
+                                    <a href="javascript:void(0);" class="cs-close-wrap" role="button"><img src="/-/media/project/coolsculpting/navigation/close432c.png?h=24&amp;w=24&amp;la=pt&amp;hash=17CD0E4A39A217D93E4729055566872549601CF0" Class="close" data-dismiss="modal" alt="Close" /></a>
+                                </div>
+                                <p class="modal-title">
+                                    Este site é destinado a pessoas que residem apenas no Brasil. Caso queira ver outro site, escolha na lista abaixo:
+                                </p>
+
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-body">
+                                    <div class="cs-wrapper">
+                                        <ul>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://uk.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'United Kingdom','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/gb.png" alt="testing" /> <span class="cs-text">
+                                                        UK
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://fi.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Finland','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/finland-flag.jpg" alt="testing" /> <span class="cs-text">
+                                                        Finland
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://hk.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Hongkong','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/hongkong.png" alt="testing" /> <span class="cs-text">
+                                                        Hong Kong
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://in.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'India','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/india.png" alt="testing" /> <span class="cs-text">
+                                                        India
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://jp.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/japan.jpg" alt="testing" /> <span class="cs-text">
+                                                        Japan
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://my.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Malaysia','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/malaysia.png" alt="testing" /> <span class="cs-text">
+                                                        Malaysia
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://no.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Norway','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/norway.jpg" alt="testing" /> <span class="cs-text">
+                                                        Norway
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://pl.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Poland','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/poland_flag.png" alt="testing" /> <span class="cs-text">
+                                                        Poland
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://www.coolsculpting-france.com/" onclick="dataLayer.push({'countryName': 'France','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/fr.png" alt="testing" /> <span class="cs-text">
+                                                        France
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://de.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Germany','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/de.png" alt="testing" /> <span class="cs-text">
+                                                        Germany
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://br.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Brazil','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/br.png" alt="testing" /> <span class="cs-text">
+                                                        Brazil
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://www.coolsculpting.com.cn/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'China','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/cn.png" alt="testing" /> <span class="cs-text">
+                                                        China
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://www.coolsculpting.kr/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Korea','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/kr.png" alt="testing" /> <span class="cs-text">
+                                                        Korea
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://dk.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Netherlands','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/denmark.jpg" alt="testing" /> <span class="cs-text">
+                                                        Denmark
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://nl.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Netherlands','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/nl.png" alt="testing" /> <span class="cs-text">
+                                                        Netherlands
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://coolsculpting.se/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Sweden','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/se.png" alt="testing" /> <span class="cs-text">
+                                                        Sweden
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://coolsculpting.com.au/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Australia','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/au.png" alt="testing" /> <span class="cs-text">
+                                                        Australia
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="http://coolsculpting.ca/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'Canada','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/ca.png" alt="testing" /> <span class="cs-text">
+                                                        Canada
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://www.coolsculpting.com/" onclick="dataLayer.push({'countryName': 'USA','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/us.png" alt="testing" /> <span class="cs-text">
+                                                        USA
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <!--//Check is country-->
+
+
+                                                <a href="https://za.coolsculpting.com/?cs_internal_flag=SKIP_ORIGIN_CHECK" onclick="dataLayer.push({'countryName': 'South Africa','event': 'changeCountryCountrySelected'});" Class="cs-map"><img src="/Images/blank-image.png?la=pt" dataheight="20" src="#" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/za.png" alt="testing" /> <span class="cs-text">
+                                                        South Africa
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section links class="ng-scope">
+                    <div class="link-container">
+                        <ul class="block-inner">
+
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+
+        </main>
+
+        <!--Start: Country Selection-->
+        <section country-selection class="ng-scope">
+            <div id="cs-model" class="modal fade in" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" role="document">
+                        <div class="modal-header">
+                            <div class="cs-close-wrap">
+                            </div>
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="cs-wrapper">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cs-model" class="modal fade in" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content" role="document">
+                        <div class="modal-header">
+                            <div class="cs-close-wrap">
+                            </div>
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="cs-wrapper">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--End: Country Selection-->
+        <!-------------------------------------------------------------------------------------->
+        <!--Start: Footer Section-->
+        <section footer class="ng-scope">
+            <footer class="footer-section" role="contentinfo">
+                <div class="clinic-loc">
+                    <div class="block-inner">
+                        <!--Skip find a clinic for mea region sites non-veeva clinic-->
+
+
+                        <form class="form-inline ng-pristine ng-valid">
+
+                            <label for="footerSearch" class="label-clinic"><span>Encontre uma cl&iacute;nica</span></label>
+                            <div class="input-group" role="search">
+                                <input type="text" id="footerSearch" data-nav="findaclinic" ng-keypress="searchftrClinic($event);" class="find-clinic-input form-control search-loc" placeholder="Informe a cidade ou o c&#243;digo postal" autocomplete="off">
+
+                                <a href="/encontre-uma-clinica" class="map-pin-container pin-nav" target="_blank" role="button" ng-click="footerLocSearch($event);"><img src="/-/media/project/coolsculpting/findclinic/icon-searchace1.png?h=24&amp;w=24&amp;la=pt&amp;hash=4051DABC45C039F0BD05EB384BE16ACED8177ECA" class="v-center" alt="Busca - abre em uma nova janela" /></a>
+
+                            </div>
+
+
+                            <div class="hidden">
+                                <div id="Apigeolocationerr">ERRO de localiza&#231;&#227;o geogr&#225;fica da API!</div>
+                            </div>
+                            <div class="modal fade" id="footerErrorModal" role="dialog" style="display: none;">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content" style="text-align: left;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                            <h4 class="modal-title">Erro</h4>
+                                        </div>
+                                        <div class="modal-body body-style1">Por favor, informe o nome da cidade ou CEP v&#225;lido.</div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+                <div class="footer-inner clearfix">
+                    <div class="block-inner">
+                        <div class="footer-sec2">
+                            <a href="/" class="ws-logo" ><img src="/Images/blank-image.png?la=pt" dataheight="42" src="" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/homepage/logo-coolsculp-dt.png" alt="" /></a><ul class="social-icons">
+                                <li>
+                                    <a href="https://www.facebook.com/coolsculptingbrasil" class="icon-s1" target="_blank"=""><img src="/-/media/project/coolsculpting/navigation/fb.png?la=pt&amp;hash=2598E4E830A4421E84C71C8859567BE6BE9511FB" dataheight="38" src="/Images/blank-image.png" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/fb.png" alt=" Facebook - Abre em uma nova janela" /></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/coolsculptingbr/" class="icon-s1" target="_blank"=""><img src="/-/media/project/coolsculpting/navigation/instagram.png?la=pt&amp;hash=30B07B35C8E7E9F30299FD12BADAC44BE179D52C" dataheight="38" src="/Images/blank-image.png" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/instagram.png" alt="" /></a>
+                                </li>
+</ul>
+<a href="https://www.allerganaesthetics.com.br/" class="ws-logo" target="_blank" ><img src="/Images/blank-image.png?la=pt" dataheight="42" src="" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/homepage/allerganaesthetics_logo_black.png" alt="Allergan" />                <span class="sr-only">Abre em uma nova janela</span>
+</a>        <p class="footer-logo-info">Feito pela Allergan, líder mundial em estética médica<sup>24</sup></p>
+
+                        </div>
+                        <div class="footer-sec1">
+                            <div class="sec-inner section-links">
+                                <ul class="footer-links">
+                                    <li>
+<a href="https://privacy.abbvie/privacy-policies/all-latam-countries-except-brazil-puerto-rico-pt.html" Class="icon-link" aria-label="Política de privacidade" target="_blank" >Política de privacidade</a>                        </li>
+                                    <li>
+<a href="/termos-e-condicoes" aria-label="Termos de uso" Class="icon-link" >TeCs</a>                        </li>
+                                    <li>
+<a href="/locator-terms-conditions-of-use" aria-label="Localizador de Termos e Condições de Uso" Class="icon-link" >Termos e condições do Localizador</a>                        </li>
+                                    <li>
+<a href="/locator-disclaimer" aria-label="Isenção de responsabilidade do localizador" Class="icon-link" >Localizador Isenção de responsabilidade</a>                        </li>
+                                    <li>
+<a href="/mapa-do-site" aria-label="Mapa do site" Class="icon-link" >Mapa do site</a>                        </li>
+                                    <li>
+<a href="/fale-conosco" aria-label="Fale conosco" Class="icon-link" >Fale conosco</a>                        </li>
+                                    <li>
+<a href="javascript:void(0)" class="ot-sdk-show-settings" Class="icon-link" aria-label="Fale conosco" title="Overridden by OneTrust" >Configurações de cookies</a>                        </li>
+                                </ul>
+                            </div>
+
+
+                            <div class="sec-inner country-select clearfix">
+                                <ul class="social-icons">
+                                    <li>
+                                        <a href="https://www.facebook.com/coolsculptingbrasil" class="icon-s1" target="_blank"=""><img src="/-/media/project/coolsculpting/navigation/fb.png?la=pt&amp;hash=2598E4E830A4421E84C71C8859567BE6BE9511FB" dataheight="0" src="/Images/blank-image.png" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/fb.png" alt=" Facebook - Abre em uma nova janela" /></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/coolsculptingbr/" class="icon-s1" target="_blank"=""><img src="/-/media/project/coolsculpting/navigation/instagram.png?la=pt&amp;hash=30B07B35C8E7E9F30299FD12BADAC44BE179D52C" dataheight="0" src="/Images/blank-image.png" onload="InitialImageload(this)" loading="lazy" device="all" datasrc="/-/media/project/coolsculpting/navigation/instagram.png" alt="" /></a>
+                                    </li>
+                                </ul>
+
+                                <p class="info-text"><span>Este site &eacute; destinado ao p&uacute;blico do Brasil</span></p>
+                                <a href="javascript:void(0);" data-toggle="modal" Class="country-change" role="button" onclick="dataLayer.push({'event': 'changeCountryClicked'});" data-target="#cs-model"><span>Mudar pa&iacute;s</span> <span class="sr-only">opens a dialog</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ism-footer-note col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-12 hidden-md hidden-lg footer-zinc info-extra">
+                                    <div class="row">
+                                        <p>BZ-CSC-2050209 - Janeiro/21</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10 col-sm-12 col-xs-12 footer-text info-extra">
+                                    <p>1. Kilmer SL, et al. Lasers Surg Med. 2016; 48:3-13. 2. Kilmer SL. Lasers Surg Med. 2017. 49:63-68. 3. Avram MM & Rosemary SH. Lasers Surg Med. 2009; 41:703-708. 4. Krueger N, et al. Clin Cos Invest Derm. 2014; 7:201-205. 5. Schlessinger J, et al. Skin Med. 2013; 11:27-31. 6. CoolSculpting® system user manual (BRZ-101-TUM-EN2-J). December 2016. 7. Shek SY et al. Lasers Surg Med. 2012; 44:125-130. 8. Garibayan L, et al. Lasers Surg Med. 2014; 46:75-80. 9. Bernstein EF & Bloom JD. JAMA Facial Plastic Surg. 2017; doi:10.1001/jamafacial.2017.0102. 10. Sasaki GH, et al. Aesthetic Surg J. 2014; 34:420-431. 11. Wanitphakdeedecha R, et al. Lasers Med Sci. 2015; 30:2165-2169. 12. Lee SJ, et al. J Cos Laser Ther. 2016; 18:126-129. 13. Carruthers JD, et al. Dermatol Surg. 2017; 43:940-949. 14. Zelickson BD, et al. Lasers Surg Med. 2015; 47:120-27. 15. Boey GE & Wasilenchuck JL. Dermatol Surg. 2014; 0:1-6. 16. Stevens WG & Bachelor EP. Aesthetic Surg J. 2015; 35:66-71. 17. FDA. Indications for Use CoolSculpting® System. November 2017. Available at: https://www.accessdata.fda.gov/cdrh_docs/pdf17/K172144.pdf (accessed February 2018). 18. Klein KB, et al. Lasers Surg Med. 2009; 41:785-790. 19. Zelickson B, et al. Am Soc Dermatol Surg. 2009; 35:1462-1470. 20. Manstein D, et al. Lasers Surg Med. 2008; 40:595-604. 21. American Society for Dermatologic Surgery (ASDS). Consumer Survey on Cosmetic Dermatologic Procedures 2016. Available at: https://www.asds.net/uploadedimages/procedures_infographic_2016_FINAL.jpg (accessed February 2018). 22. Boey GE & Wasilenchuk JL. Lasers Surg Med. 2014; 46:20-26. 23. Nelson AA & Avram MM. Fat removal: Invasive and noninvasive body contouring. 1st Edition. 2015. Chichester, UK: John Wiley & Sons, Ltd. 24. Coleman SR, et al. Aesth Plast Surg. 2009; 33(44):882-888.</p>
+                                </div>
+
+                                <div class="col-md-2 hidden-sm hidden-xs footer-zinc info-extra">
+                                    <p>BZ-CSC-2050209 - Janeiro/21</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </footer>
+        </section>
+        <!--End: Footer Section-->
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Start PWA Section of Google Light house -->
+
+    <!-- END PWA Section of Google Light house -->
+    <input name="__RequestVerificationToken" type="hidden" value="1ZMXdBlVt5MyhavXPDe7C4lYXvMJ7GLqcYNHiHsdzHK4Jgcqz2IquRTCCLqCU8VngRcme0XulUCwddnA8EnI9rfIgyj6laTIT80AN9d1Ml81" />
+
+</body>
+</html>

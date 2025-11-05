@@ -1,0 +1,389 @@
+.managecookie-section {
+    background: #00a9e0 !important;
+    position: fixed;
+    z-index: 1040;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding-bottom: 20px;
+}
+
+    .managecookie-section .container {
+        max-width: 100%;
+    }
+
+    .managecookie-section .cookie-text {
+        width: 100%;
+        padding: 20px 20px 0;
+        display:table;
+    }
+
+    .managecookie-section .btn-primary {
+        float: right;
+        text-decoration: none;
+        margin-bottom: 10px;
+        min-width: 260px;
+        line-height: 26px;
+        color: #005eb8 !important;
+        background: #FFF !important;
+        border-color: #CCC
+    }
+
+    .managecookie-section .btn-primary:last-child {
+        margin-bottom:0;
+    }
+
+    .managecookie-section a {
+        text-decoration: underline;
+        display: inline-block;
+        color:#FFF;
+    }
+
+    .managecookie-section .container aside {
+        width: 75%;
+        display: table-cell;
+        vertical-align:top;
+        color:#FFF;
+        font-size:12px;
+        line-height:16px;
+    }
+
+
+    .managecookie-section .container h2 {
+        font-size:14px;
+        margin-top:0;
+        margin-bottom:20px;
+        color:#FFF;
+        display: table-row;
+    }
+body[data-iseeditor="1"] .managecookie-section {
+    position: relative;
+}
+body[data-iseeditor="1"] #managecookiepopup {
+    position: relative;
+    display: block !important;
+    opacity:1;
+    padding-top: 525px;
+    z-index:1;
+}
+#managecookiepopup {
+    z-index:9999;
+}
+#managecookiepopup .modal-content {
+    background: #FFF;
+    color: #333;
+}
+
+#managecookiepopup .checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+
+
+    #managecookiepopup .checkmark:after {
+        left: 8px;
+        top: -8px;
+        width: 12px;
+        height: 24px;
+        border: solid #ff585d;
+        border-width: 0 6px 6px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        box-sizing: inherit;
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+#managecookiepopup input:checked ~ .checkmark:after {
+    display: block;
+}
+
+#managecookiepopup .close {
+    color: #333 !important;
+    opacity: 1;
+}
+
+#managecookiepopup h2.modal-title {
+    font-weight: bold;
+    line-height: normal;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+#managecookiepopup p.body-style1 {
+    color: #333 !important;
+    font-size:14px;
+    line-height:normal;
+}
+
+#managecookiepopup #cookieDetails h2 {
+    font-size: 14px;
+}
+
+#managecookiepopup .tab-content#cookieAccordion {
+    border-top: none;
+}
+
+    #managecookiepopup .panel-group.innerAccordion {
+        margin-bottom: 0px;
+    }
+
+#managecookiepopup .panel-title {
+    position: relative;
+}
+
+    #managecookiepopup .panel-title label.active {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+
+    }
+
+        #managecookiepopup .panel-title label.active p {
+            color: #333 !important;
+            font-size:14px;
+            line-height:normal;
+            margin:0;
+        }
+
+    #managecookiepopup .panel-title a.collapsed ~ label.active p {
+        color: #333 !important;
+    }
+
+    #managecookiepopup .panel-title a {
+        display: block;
+    }
+
+#managecookiepopup .panel-default {
+    border-color: transparent;
+}
+
+    #managecookiepopup .panel-default > .panel-heading {
+        background: transparent;
+        color: #333;
+        border: none;
+    }
+
+#managecookiepopup .panel {
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    margin-top: 0px;
+    background: transparent;
+    border: 1px solid #333;
+    padding: 0;
+}
+
+
+    #managecookiepopup .panel-heading a {
+        padding: 10px 15px;
+        background: #f4f4f4;
+        color: #333 !important;
+        font-size: 14px;
+        line-height: normal;
+    }
+
+#managecookiepopup .innerAccordion .panel-heading a, #managecookiepopup .innerAccordion .panel-heading a.collapsed {
+    padding: 5px 15px;
+    background: #FFF;
+    color: #333 !important;
+    text-decoration: none;
+}
+
+.accordion-section-title {
+    font-size: 14px;
+    line-height:normal;
+    font-family: 'AvenirNextLTW01-Medium' !important;
+    font-weight: 400;
+}
+
+    .accordion-section-title h2 {
+        font-size: 14px;
+        font-family: 'AvenirNextLTW01-Bold' !important;
+    }
+
+    .accordion-section-title ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+    .accordion-section-title ul li{
+        padding:0px;
+        margin:0px;
+        
+    }
+
+    #managecookiepopup .panel-heading a.collapsed, #managecookiepopup .panel p, #managecookiepopup .panel .panel-body, .accordion-section-title a {
+        color: #333 !important;
+        font-size: 14px;
+        line-height: normal;
+    }
+
+#managecookiepopup .panel .panel-body {
+    padding-top: 20px;
+}
+
+#cookieDetails .btn-primary {
+    margin: 20px auto;
+    line-height: 26px;
+    background: #005eb8;
+    color: #FFF;
+    border-radius: 24px;
+}
+
+#managecookiepopup .panel-heading a.collapsed {
+    background: transparent;
+}
+
+#managecookiepopup .panel-heading {
+    padding: 0px;
+}
+
+    #managecookiepopup .panel-heading a img.downarw {
+        display: none;
+    }
+
+    #managecookiepopup .panel-heading a img.uparw {
+        display: block;
+        width: 23px;
+        margin-top: -2px;
+        margin-right: 10px;
+        transform: rotate(-90deg);
+    }
+
+    #managecookiepopup .panel-heading a.collapsed > img.downarw {
+        display: block;
+        width: 23px;
+        margin-top: -2px;
+        margin-right: 10px;
+        transform: rotate(90deg);
+    }
+
+    #managecookiepopup .panel-heading a.collapsed > img.uparw {
+        display: none;
+        /*transform: rotate(-90deg);*/
+    }
+
+/* The switch - the box around the slider */
+.switch {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    top:8px;
+    right: 20px;
+}
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 24px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+
+.ftr-Cookie-link {
+    text-align:center;
+    padding: 20px 0px;
+}
+
+    .ftr-Cookie-link a {
+        color: #333333;
+    }
+
+    @media only screen and (min-width:768px) and (max-width:1024px) {
+        #managecookiepopup .panel-heading a img.uparw {
+            display: block;
+            width: 16px;
+            margin-top: 5px;
+        }
+
+        #managecookiepopup .panel-heading a.collapsed img.downarw {
+            display: block;
+            width: 16px;
+            margin-top: 5px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+
+        .managecookie-section .container aside {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .managecookie-section .btn-primary {
+            min-width: 300px;
+            /*margin:  auto;*/
+            display: block;
+            clear: both;
+        }
+
+        #managecookiepopup .panel-heading a img.uparw {
+            display: block;
+            width: 16px;
+            margin-top: 5px;
+        }
+
+        #managecookiepopup .panel-heading a.collapsed img.downarw {
+            display: block;
+            width: 16px;
+            margin-top: 5px;
+        }
+    }
