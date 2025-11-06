@@ -4,8 +4,8 @@
   "description": "Netlify migration sites",
   "scripts": {
     "start": "cd src && http-serve --proxy http://127.0.0.1:8080/index.html",
-    "build": "cp _headers src && cp _redirects src",
-    "netlify": "netlify dev"
+    "build": "copy _headers src && copy _redirects src",
+    "dev": "cd src && http-serve"
   },
   "repository": {
     "type": "git",
@@ -14,8 +14,6 @@
   "author": "AAAEM",
   "license": "ISC",
   "dependencies": {
-    "http-proxy-middleware": "2.0.6",
-    "http-serve": "1.0.1",
-    "netlify-cli": "12.5.0"
+    "http-serve": "1.0.1"
   }
 }
